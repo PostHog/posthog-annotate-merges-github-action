@@ -11,6 +11,7 @@ try {
     content: annotationMessage,
     scope: "project",
     date_marker: new Date().toISOString(),
+    creation_type: "GIT"
   };
 
   // API docs at https://posthog.com/docs/api/annotations#post-api-projects-project_id-annotations
