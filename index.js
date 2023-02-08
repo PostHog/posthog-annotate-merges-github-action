@@ -30,8 +30,6 @@ try {
     .catch((error) => {
       console.error("error", error);
     });
-
-  client.shutdown();
 } catch (error) {
   setFailed(error.message);
 }
