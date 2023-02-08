@@ -15,20 +15,22 @@ try {
   };
 
   // API docs at https://posthog.com/docs/api/annotations#post-api-projects-project_id-annotations
-  const response = await fetch(
-    `${posthogAPIHost}/api/projects/${projectId}/annotations/`,
-    {
-      method: "post",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${posthogToken}`,
-      },
-    }
-  );
-  const data = await response.json();
-
-  console.log(data);
+  fetch(`${posthogAPIHost}/api/projects/${projectId}/annotations/`, {
+    method: "post",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${posthogToken}`,
+    },
+  })
+    .then((response) => {
+      response.json().then((data) => {
+        console.log("success", data);
+      });
+    })
+    .catch((error) => {
+      console.error("error", error);
+    });
 
   client.shutdown();
 } catch (error) {
