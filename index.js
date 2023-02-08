@@ -1,12 +1,11 @@
-const core = require("@actions/core");
-const github = require("@actions/github");
-const fetch = require("node-fetch");
+import { getInput, setFailed } from "@actions/core";
+import fetch from "node-fetch";
 
 try {
-  const projectId = core.getInput("posthog-project-id");
-  const posthogToken = core.getInput("posthog-token");
-  const posthogAPIHost = core.getInput("posthog-api-host");
-  const annotationMessage = core.getInput("annotation-message");
+  const projectId = getInput("posthog-project-id");
+  const posthogToken = getInput("posthog-token");
+  const posthogAPIHost = getInput("posthog-api-host");
+  const annotationMessage = getInput("annotation-message");
 
   const body = {
     content: annotationMessage,
@@ -34,5 +33,5 @@ try {
 
   client.shutdown();
 } catch (error) {
-  core.setFailed(error.message);
+  setFailed(error.message);
 }
