@@ -1,21 +1,12 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 
 try {
   const projectId = core.getInput("posthog-project-id");
   const posthogToken = core.getInput("posthog-token");
   const posthogAPIHost = core.getInput("posthog-api-host");
   const annotationMessage = core.getInput("annotation-message");
-
-  const githubContext = {
-    sha: github.context.sha,
-    ref: github.context.ref,
-    workflow: github.context.workflow,
-    job: github.context.job,
-    runNumber: github.context.runNumber,
-    runId: github.context.runId,
-  };
 
   const body = {
     content: annotationMessage,
