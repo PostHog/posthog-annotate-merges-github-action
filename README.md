@@ -29,9 +29,23 @@ Defaults to "https://app.posthog.com"
 Your personal API token must be kept secret.
 
 ```yaml
-uses: actions/posthog-github-action
-with:
-  posthog-token: ${{ secrets.API_TOKEN }}
-  posthog-project-id: ${{ secrets.PROJECT_ID }}
-  annotation-message: "PR #21 merged"
+name: Report PR to PostHog
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  report-pr-age:
+    name: Report PR to PostHog
+    runs-on: ubuntu-20.04
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Report PR to PostHog
+        uses: PostHog/posthog-annotate-merges-github-action@0.1.4
+        with:
+          posthog-token: ${{secrets.POSTHOG_PERSONAL_API_KEY}}
+          posthog-project-id: ${{secrets.POSTHOG_PROJECT_ID}}
+          annotation-message: "Merged PR #${{github.event.pull_request.number}} ${{github.event.pull_request.title}}"
 ```
