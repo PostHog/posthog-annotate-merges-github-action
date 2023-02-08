@@ -1,0 +1,19 @@
+name: 'PostHog Annotations'
+description: 'Send an annotation to PostHog from GitHub actions'
+inputs:
+    posthog-token:
+        description: 'Your PostHog personal API token - see the "my settings section" e.g. https://app.posthog.com/me/settings'
+        required: true
+    posthog-project-id:
+        description: 'Your PostHog project id - see https://app.posthog.com/project/settings'
+        required: true
+    posthog-api-host:
+        description: 'Your PostHog API host'
+        required: false
+        default: 'https://app.posthog.com'
+    annotation-message:
+        description: 'the message to send as an annotation'
+        required: true
+runs:
+    using: 'node16'
+    main: 'index.js'

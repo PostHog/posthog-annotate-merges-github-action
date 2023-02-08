@@ -1,0 +1,25 @@
+{
+  "name": "posthog-annotate-merges-github-action",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PostHog/posthog-annotate-merges-github-action"
+  },
+  "keywords": [],
+  "author": "Paul D'Ambra",
+  "license": "CC-BY-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/posthog/posthog-annotate-merges-github-action/issues"
+  },
+  "homepage": "https://github.com/posthog/posthog-annotate-merges-github-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
+    "node-fetch": "^3.3.0"
+  }
+}
